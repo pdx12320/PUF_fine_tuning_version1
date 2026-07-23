@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1040" viewBox="0 0 1200 1040" role="img" aria-labelledby="title desc">
+  <title id="title">LAMAR model architecture for candidate ranking</title>
+  <desc id="desc">A 101-nucleotide RNA context enters the pretrained LAMAR transformer. The center cytosine representation is adapted through LoRA attention layers and mapped to an editing-candidate probability.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F4FBFF"/>
+      <stop offset="1" stop-color="#F5F2FF"/>
+    </linearGradient>
+    <filter id="shadow" x="-12%" y="-20%" width="124%" height="150%">
+      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#0F172A" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="1040" rx="34" fill="url(#background)"/>
+  <text x="600" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#14213D">How LAMAR scores a candidate cytosine</text>
+
+  <g font-family="Arial, sans-serif" filter="url(#shadow)">
+    <rect x="190" y="105" width="820" height="126" rx="24" fill="#FFFFFF" stroke="#2563EB" stroke-width="4"/>
+    <text x="600" y="149" text-anchor="middle" font-size="24" font-weight="700" fill="#1E3A8A">101 nt transcript-oriented RNA context</text>
+    <text x="600" y="193" text-anchor="middle" font-size="20" fill="#475569">... U G A C U A G <tspan fill="#BE123C" font-weight="700">C</tspan> A U C A G C U ...</text>
+
+    <rect x="190" y="290" width="820" height="126" rx="24" fill="#FFFFFF" stroke="#0F766E" stroke-width="4"/>
+    <text x="600" y="340" text-anchor="middle" font-size="26" font-weight="700" fill="#115E59">Pretrained LAMAR transformer</text>
+    <text x="600" y="382" text-anchor="middle" font-size="18" fill="#475569">Contextual representation learned from RNA sequence</text>
+
+    <rect x="190" y="475" width="820" height="126" rx="24" fill="#FFFFFF" stroke="#D97706" stroke-width="4"/>
+    <text x="600" y="525" text-anchor="middle" font-size="26" font-weight="700" fill="#92400E">Center C representation</text>
+    <text x="600" y="567" text-anchor="middle" font-size="18" fill="#475569">Hidden state at the known candidate position, index 50</text>
+
+    <rect x="190" y="660" width="820" height="126" rx="24" fill="#FFFFFF" stroke="#7C3AED" stroke-width="4"/>
+    <text x="600" y="710" text-anchor="middle" font-size="26" font-weight="700" fill="#5B21B6">LoRA-adapted decision layer</text>
+    <text x="600" y="752" text-anchor="middle" font-size="18" fill="#475569">Low-rank updates to q/k/v/o attention projections</text>
+
+    <rect x="190" y="845" width="820" height="126" rx="24" fill="#FFFFFF" stroke="#BE123C" stroke-width="4"/>
+    <text x="600" y="895" text-anchor="middle" font-size="26" font-weight="700" fill="#9F1239">Editing-candidate probability</text>
+    <text x="600" y="937" text-anchor="middle" font-size="18" fill="#475569">Calibrated ranking score for experimental screening</text>
+  </g>
+
+  <g stroke="#475569" stroke-width="5" fill="none" marker-end="url(#arrow)">
+    <path d="M600 242 V275"/>
+    <path d="M600 427 V460"/>
+    <path d="M600 612 V645"/>
+    <path d="M600 797 V830"/>
+  </g>
+</svg>

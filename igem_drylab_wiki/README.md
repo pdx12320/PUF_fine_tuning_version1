@@ -1,42 +1,71 @@
-# Sequence-informed prioritization of C-to-U RNA-editing candidates
+# AI-guided RNA editing design with LAMAR
 
-## Overview
+> **Prioritizing candidate RNA sites for programmable C-to-U editing using
+> pretrained RNA language models.**
 
-C-to-U RNA editing can diversify transcript function, but experimental
-validation across every transcriptomic cytosine is impractical. We developed a
-dry-lab system that ranks 101-nucleotide (nt) sequence contexts for targeted
-follow-up. The model addresses a screening question: **which central
-cytosines are sufficiently supported to justify experimental validation?**
+Experimental validation cannot test every cytosine in the transcriptome. Our
+model ranks candidate editing contexts before wet-lab validation.
 
-The study combines unified RNA-seq recounting, expression-supported negative
-selection, leakage-controlled splitting, sequence baselines, pretrained LAMAR
-representations, parameter-efficient adaptation and prevalence-aware
-calibration. It does not predict editing efficiency. Its outputs are
-computational priorities, not experimentally verified editing events.
+![AI-guided sequence prioritization workflow](assets/ai_guided_rna_design.svg)
 
-![End-to-end dry-lab workflow](assets/pipeline_overview.svg)
+This dry-lab project evaluates one decision layer in programmable RNA editing:
+choosing which sequence contexts should move forward to PUF-APOBEC experiments.
+The output is a ranked shortlist, not experimental proof of editing.
 
-## Why the dataset required a new design
+## 1. Biological motivation
 
-A classifier can appear successful when its labels encode technical shortcuts.
-Two risks were especially important here. First, an uncovered cytosine cannot
-be treated as unedited because no read tested that hypothesis. Second, random
-row splitting can place related genes, overlapping windows or duplicate
-sequences in both training and evaluation data.
+> **Takeaway:** Programmable RNA editors need computational guidance because
+> the number of possible target cytosines is much larger than experimental
+> capacity.
 
-We therefore designed the dataset around three requirements:
+APOBEC cytidine deaminase activity can support C-to-U conversion in engineered
+RNA-editing systems. PUF repeat proteins offer programmable RNA recognition.
+These components motivate a PUF-APOBEC strategy for targeted RNA editing.
 
-1. positives and negatives must use identical pileup semantics;
-2. strict negatives must have direct expression and coverage evidence;
-3. related sequence contexts must remain within one data split.
+The unresolved design question is where to edit. Each transcript can contain
+many cytosines, and local sequence contexts differ. Testing every possible site
+would consume substantial cloning, sequencing and validation effort.
 
-This design shifts the task from separating called sites from arbitrary
-genomic positions to separating two deeply measured computational classes.
+We use AI to prioritize candidates before wet-lab testing:
 
-## Recounting six RNA-seq samples
+`Thousands of cytosines` → `sequence screening` → `LAMAR ranking` →
+`prioritized candidates` → `PUF-APOBEC testing`
 
-Three treated and three control MarkDuplicates BAMs were processed with one
-pileup implementation. Every sample used the same read-level filters:
+The model does not select a complete editor design. It provides sequence
+evidence that can be combined with PUF-binding and off-target criteria.
+
+## 2. Computational strategy
+
+> **Takeaway:** The workflow turns RNA-seq evidence into leakage-controlled
+> labels, then learns a sequence ranking for experimental follow-up.
+
+The system has three stages:
+
+1. **Dataset:** recount six RNA-seq samples and construct computational labels.
+2. **Model:** adapt pretrained LAMAR to recognize editing-associated contexts.
+3. **Prediction:** rank 101-nt sequences around candidate cytosines.
+
+![Leakage-controlled computational workflow](assets/pipeline_overview.svg)
+
+Every model input is transcript oriented and exactly 101 nt long. The candidate
+C is placed at zero-based index 50.
+
+| Input | AI role | Output |
+| --- | --- | --- |
+| A 101-nt context centered on C | Compare the context with learned editing-associated sequence patterns | A calibrated candidate-ranking probability |
+
+The model receives sequence only. Coverage and annotation are used for dataset
+construction, matching and audits, not as default model inputs.
+
+## 3. Dataset construction
+
+> **Takeaway:** Strict labels require direct six-sample measurement, and
+> related sequences never cross evaluation boundaries.
+
+### Unified RNA-seq recounting
+
+Three treated and three control MarkDuplicates BAMs were analyzed with one
+pileup implementation:
 
 - mapping quality of at least 30;
 - base quality of at least 20;
@@ -46,154 +75,114 @@ pileup implementation. Every sample used the same read-level filters:
 - usable depth defined as filtered A+C+G+T depth;
 - a minimum qualifying usable depth of 20.
 
-The model input was normalized to transcript orientation. A positive-strand
-C-to-T event and a negative-strand G-to-A event therefore map to the same
-C-to-U interpretation. Every retained context contains 101 nt and has C at
-the central zero-based index 50.
+Positive-strand C-to-T and negative-strand G-to-A events were normalized to the
+same transcript-oriented C-to-U representation.
 
-For each candidate, replicate editing rates were summarized with treated and
-control medians. Replicate variability was measured with the median absolute
-deviation. Corrected editing efficiency was calculated as:
+### Computational-positive class
+
+All sites began with a broad 9,930-site candidate matrix, but their counts were
+recomputed from the six selected BAMs. Corrected editing efficiency was:
 
 `max(treated_median - control_median, 0)`.
 
-The accompanying Fisher and Benjamini-Hochberg values are pooled-read
-screening statistics. They do not constitute biological-replicate
-experimental validation.
-
-## Defining computational positives
-
-All positive candidates began with a broad 9,930-site matrix, but their counts
-were recomputed from the six selected BAMs. A main computational positive
-required:
+A main computational positive required:
 
 1. corrected editing efficiency strictly greater than 0.10;
-2. at least two depth-qualified treated and two depth-qualified control
-   replicates;
+2. at least two depth-qualified treated and control replicates;
 3. a control median no greater than 0.02;
-4. a valid transcript-oriented 101-nt sequence centered on C;
-5. no central-site overlap with either whole-genome sequencing VCF;
+4. a valid 101-nt context centered on C;
+5. no central variant in either whole-genome sequencing VCF;
 6. deterministic genomic-key deduplication.
 
-These criteria yielded 1,513 main computational positives. A
-high-confidence audit subset also required usable depth of at least 20 in all
-six samples and BH-FDR below 0.05. Treated MAD could not exceed 0.05, while
-control MAD could not exceed 0.02. This subset contained 1,457 sites.
+The dataset contained **1,513 main computational positives**. A
+high-confidence subset imposed all-six coverage, BH-FDR and replicate
+variability criteria. It retained **1,457 sites**.
 
-## Defining expression-supported strict negatives
+The Fisher and Benjamini-Hochberg values are pooled-read screening statistics.
+They are not biological-replicate experimental validation.
 
-Strict computational negatives were not selected merely because they were
-absent from the candidate table. We enumerated transcript-oriented exonic
-cytosines and required direct RNA-seq evidence at every retained site.
+### Expression-supported strict negatives
 
-Each strict negative satisfied all of the following:
+An unreported site is not automatically negative. Every strict computational
+negative required:
 
 - usable depth of at least 20 in all six samples;
-- target-alternative count exactly zero in all six samples;
-- no overlap with a main, sensitivity or broad ambiguous candidate center;
-- no central-site occurrence in either whole-genome sequencing VCF;
-- valid strand, reference base and complete 101-nt context;
+- exactly zero target-alternative reads in all six samples;
+- no overlap with a positive or broad ambiguous candidate center;
+- no central variant in either whole-genome sequencing VCF;
+- valid orientation, reference base and 101-nt sequence;
 - no low-complexity trigger.
 
-The resulting universe contained 2,821,734 strict computational negatives.
-The all-six coverage and zero-target-alternative assertion had zero violations.
-Finite read depth cannot prove universal editing absence, so these sites remain
-computational negatives.
+These rules yielded **2,821,734 strict computational negatives**. The all-six
+coverage and zero-alt assertion had zero violations.
 
-## Applying identical sequence-complexity rules
+The same low-complexity OR rule was applied to both classes before splitting:
 
-The same deterministic rule was applied to both classes before splitting. A
-site was marked as low complexity when any condition was met:
-
-- base-2 single-nucleotide Shannon entropy below 1.20;
+- base-2 nucleotide entropy below 1.20;
 - a homopolymer run of at least 20 nt;
-- maximum two-phase dinucleotide-repeat coverage of at least 0.80.
+- dinucleotide-repeat coverage of at least 0.80.
 
 No main computational positive was removed. The rule excluded 2,087 of
-2,823,821 potential strict negatives, corresponding to 0.0739%.
+2,823,821 potential strict negatives, or 0.0739%.
 
 External basewise mappability was unavailable and is recorded as
-`NA_RESOURCE_MISSING`. Mapping-quality filtering and sequence-complexity
-filtering are not equivalent to external mappability validation.
+`NA_RESOURCE_MISSING`. Sequence-complexity and mapping-quality filters are not
+treated as external mappability validation.
 
-## Preventing information leakage
+### Leakage control
 
-The complete positive and negative universes were grouped before sampling.
-Sites shared a leakage group when they had any of the following relationships:
+Sites shared a leakage group when they shared a gene, genomic center, exact
+sequence or overlapping strand-aware 101-nt window. Group assignment occurred
+before sampling.
 
-- the same gene;
-- the same genomic center;
-- the same 101-nt sequence;
-- overlapping strand-aware 101-nt genomic windows.
-
-Deterministic assignment then produced four immutable splits:
-
-| Split | Positives | Negatives used in evaluation | Purpose |
+| Split | Positives | Evaluation negatives | Purpose |
 | --- | ---: | ---: | --- |
 | Train | 1,028 | Dynamic train-only pool | Parameter learning |
-| Development | 159 | 1,590 | Model and hyperparameter selection |
+| Development | 159 | 1,590 | Model selection |
 | Calibration | 165 | 165,000 | Calibration and threshold selection |
 | Locked test | 161 | 161,000 | One final evaluation |
 
-Quality-control assertions found no gene, leakage group, exact sequence or
-genomic key crossing splits. No locked-test row appeared in train,
-development or calibration data.
+No gene, leakage group, exact sequence or genomic key crossed splits. The
+locked test was not used for model selection, hard-negative mining,
+calibration or threshold choice.
 
-The locked test remained excluded from model selection, hard-negative mining,
-calibration fitting and threshold choice. It was opened only after these
-decisions had been frozen.
+## 4. AI model
 
-## Establishing baselines before adapting LAMAR
+> **Takeaway:** LAMAR represents RNA context, while LoRA efficiently adapts
+> attention to the editing-prioritization task.
 
-We first trained two sequence-only baselines. Logistic regression used 1-mer
-to 4-mer counts, GC fraction, C count and sequence entropy. A convolutional
-neural network used one-hot encoded 101-nt sequences.
+![LAMAR architecture for editing-candidate ranking](assets/lamar_model_architecture.svg)
 
-These models tested whether a foundation model added information beyond short
-motifs and simple composition. Their locked-test AP values were 0.006598 and
-0.013912, respectively.
+LAMAR is a pretrained RNA language model. For each candidate, it produces
+contextual hidden representations across the 101-nt sequence.
 
-## Comparing LAMAR training strategies
+The selected model uses the representation at the known center C. Low-rank
+adaptation then updates q/k/v/o attention projections without retraining the
+entire backbone.
 
-We evaluated four adaptation strategies:
+The final configuration used:
 
-1. a frozen LAMAR backbone with a trainable classification head;
-2. partial fine-tuning of the final one, two or four transformer blocks;
-3. LoRA adaptation of attention projections;
-4. full fine-tuning as a resource-intensive comparison.
+- center-token pooling;
+- q/k/v/o LoRA with rank 4, alpha 8 and dropout 0.05;
+- binary cross-entropy;
+- dynamic random strict negatives at 1:10;
+- backbone and head learning rates of `1e-5` and `1e-4`;
+- batch size 16 with two-step gradient accumulation;
+- warmup ratio 0.03, no weight decay and early stopping.
 
-Training negatives were sampled only from the train split and refreshed
-between epochs. Development-set experiments compared ratios from 1:1 to 1:20,
-random, matched and hard negatives, multiple losses, learning rates,
-regularization settings and LoRA configurations.
+The configuration was selected using development AP and repeated with seeds
+42, 43 and 44. Development AP was `0.808719 ± 0.013597`.
 
-The selected model used center-token pooling and LoRA on q/k/v/o attention
-projections. It used rank 4, alpha 8, dropout 0.05 and binary cross-entropy.
-Dynamic random strict negatives were sampled at 1:10. The backbone and head
-learning rates were `1e-5` and `1e-4`.
+We also evaluated k-mer logistic regression, a convolutional neural network,
+frozen LAMAR, partial fine-tuning and full fine-tuning. These comparisons test
+whether pretrained sequence information and task adaptation add value.
 
-The selected configuration used batch size 16, two-step gradient accumulation,
-warmup ratio 0.03, no weight decay and early stopping. Repeated training with
-seeds 42, 43 and 44 gave development AP of `0.808719 ± 0.013597`.
+## 5. Performance evaluation
 
-## Testing information already present in pretrained LAMAR
+> **Takeaway:** LoRA LAMAR achieved the strongest locked-test AP, while the
+> frozen threshold preserved an explicit false-positive budget.
 
-The original pretrained checkpoint was loaded without adapters, fine-tuned
-weights or a classification head. All 85,851,793 backbone parameters remained
-frozen during embedding extraction.
-
-We evaluated center, mean, masked-mean and CLS representations. Labeled train
-examples estimated class centroids for zero-gradient scoring. Logistic
-regression then tested how much information a 769-parameter linear probe could
-extract from fixed embeddings.
-
-The term “zero-shot” denotes zero gradient-based LAMAR adaptation in this
-study. It is not label-free because train labels estimate the centroids.
-
-## Model comparison on the locked test
-
-All model choices, calibration functions and thresholds were frozen before the
-locked test was opened.
+![Locked-test average precision comparison](assets/model_performance.svg)
 
 | Model | Trained parameters | Development AP | Test AP | Precision | Recall | FP/M |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -206,34 +195,24 @@ locked test was opened.
 | Convolutional neural network | 59,969 | 0.365052 | 0.013912 | 0.111111 | 0.012422 | 99.379 |
 | K-mer logistic regression | 344 | 0.330512 | 0.006598 | 0 | 0 | 0 |
 
+LoRA LAMAR improved locked-test AP from the baseline values to **0.171958**.
+
 ![Locked-test precision-recall curves](assets/PR_curves.png)
 
-The unadapted center representation exceeded both simple baselines. The linear
-probe raised test AP from 0.036180 to 0.066262. Its performance was similar to
-the frozen neural head, which reached 0.064390.
+### Evaluation at realistic prevalence
 
-LoRA improved test AP by another 0.105695 over the linear probe. This pattern
-is consistent with task-specific representation adaptation beyond a simple
-classifier. The ablation remains observational and does not uniquely assign
-every performance gain.
+Training ratios do not represent screening prevalence. Raw sigmoid scores were
+therefore not interpreted as real-world probabilities.
 
-Center position carried substantially more information than global pooling.
-Mean-pooling test AP was 0.004307 for centroid scoring and 0.005391 for the
-linear probe.
+Uncalibrated, Platt and isotonic mappings were compared only on the fixed
+1:1000 calibration split. Platt scaling was selected.
 
-## Calibrating scores for a 1:1000 screening setting
+The final threshold, `0.24298369973628076`, maximized recall under a target of
+at most 100 false positives per million calibration negatives. Calibration
+achieved 96.97 FP/M.
 
-The training ratio does not represent screening prevalence. Raw sigmoid scores
-were therefore not interpreted as real-world probabilities. Uncalibrated,
-Platt and isotonic mappings were compared only on the fixed calibration set.
-
-Platt scaling was selected. The final threshold,
-`0.24298369973628076`, maximized recall under a target of no more than 100
-false positives per million calibration negatives. Calibration achieved
-96.97 FP/M.
-
-The unchanged model, calibrator and threshold were then applied once to the
-locked test:
+The unchanged model, calibrator and threshold were applied once to the locked
+test:
 
 | Metric | Value |
 | --- | ---: |
@@ -248,78 +227,102 @@ locked test:
 | False positives per million negatives | 136.646 |
 | ROC-AUC, supplementary | 0.957783 |
 
-At the frozen threshold, the model identified 20 computational positives and
-22 strict computational negatives. It missed 141 computational positives.
-The calibration target was exceeded on test, but the threshold was not changed
-after this observation.
+At the frozen threshold, the model returned 20 computational positives and 22
+strict computational negatives. It missed 141 computational positives.
 
-![Locked-test ROC curves](assets/ROC_curves.png)
+The test false-positive rate exceeded the calibration target. We did not
+change the threshold after observing this result.
 
 ![Probability calibration](assets/calibration_curve.png)
 
-## Interpreting pretrained representations
+## 6. Interpretation
 
-The embedding analysis asks whether pretrained LAMAR encoded information
-related to the editing label before task adaptation. The center centroid
-achieved test AP 0.036180, compared with an empirical random baseline of
-0.001143. A linear classifier extracted additional information, while LoRA
-adaptation produced the largest gain.
+> **Takeaway:** Pretrained LAMAR already contains editing-associated sequence
+> information, but task adaptation and the center position are important.
 
-These comparisons support two bounded conclusions. First, pretrained
-center-token representations contain sequence information associated with the
-computational editing label. Second, task adaptation improves this
-representation. Neither result establishes a molecular mechanism.
+The original pretrained checkpoint was loaded without adapters, fine-tuned
+weights or a classification head. All 85,851,793 backbone parameters remained
+frozen during embedding extraction.
+
+A center-token centroid reached test AP 0.036180 without gradient-based LAMAR
+adaptation. A 769-parameter linear probe reached 0.066262, similar to the
+frozen neural head at 0.064390.
+
+LoRA added 0.105695 absolute test AP over the linear probe. This pattern is
+consistent with task-specific representation adaptation beyond a simple
+classifier.
+
+Mean-pooling test AP was only 0.004307 for centroid scoring and 0.005391 for
+the linear probe. The known candidate position carried substantially more
+information than a global sequence average.
 
 ![Pretrained center-embedding PCA](assets/embedding_PCA.png)
 
-## Checking shortcut learning
+### Shortcut analysis
 
-The model receives sequence only, but sequence can correlate with coverage,
-expression and candidate-generation rules. We therefore compared fixed
-embeddings with metadata-only and combined models on the development set.
+A metadata-only model reached development AP 0.759266. The fixed LAMAR
+embedding reached 0.698583, and their combination reached 0.813666.
 
-| Development model | AP |
-| --- | ---: |
-| LAMAR center embedding | 0.698583 |
-| Metadata only | 0.759266 |
-| Embedding plus metadata | 0.813666 |
-
-The largest absolute embedding-PC correlation was between PC3 and GC fraction
-(`r=0.637`). Metadata remained strongly predictive, so coverage, expression
-and sequence-composition bias cannot be excluded.
+The strongest embedding-PC correlation was PC3 with GC fraction (`r=0.637`).
+Coverage, expression and sequence-composition bias therefore remain plausible,
+even though LAMAR receives sequence only.
 
 Among the 100 highest-scoring strict negatives, motif-similar sequences
-accounted for 81 zero-shot cases and 99 linear-probe cases. These results
-identify motif-similar negatives as a major failure mode rather than proof of
-unobserved editing.
+accounted for 81 zero-gradient cases and 99 linear-probe cases. These are hard
+negative failure modes, not evidence of unobserved editing.
 
 ![Embedding and metadata correlations](assets/metadata_correlation.png)
 
-## What the model can and cannot support
+## 7. Connection to wet lab
 
-The model can rank candidate sequences under a declared false-positive budget.
-It can support selection of a smaller, auditable validation panel.
+> **Takeaway:** Predictions can prioritize PUF-APOBEC experiments, but
+> molecular compatibility and editing performance must still be measured.
 
-The model cannot:
+The current model can support a practical candidate-selection step:
 
-- prove editing in a new biological context;
-- establish that a strict negative is universally unedited;
-- replace biological replicates or orthogonal validation;
-- estimate editing efficiency;
-- establish causal recognition by a specific editor;
-- transfer calibrated probabilities unchanged to another assay or cell type.
+1. identify central cytosines in a target transcript;
+2. extract transcript-oriented 101-nt contexts;
+3. rank contexts with the frozen LAMAR pipeline;
+4. combine the ranking with PUF-binding constraints;
+5. select a limited panel for experimental testing.
 
-The labels derive from one six-sample system. External basewise mappability was
-not available. Sequence composition and dataset-generation bias remain
-measurable. These limitations define the boundary of every result reported
-here.
+The model reduces experimental search space. It does not prove that a site
+will edit in a new biological context, identify the best PUF-binding sequence
+or establish causal recognition by an editor.
 
-## Reproducibility and open documentation
+### Future integration
 
-The public archive contains dataset and training source code, experiment
-configurations, QC assertions, filter funnels, aggregate prediction tables,
-error analyses, figures and compact model artifacts. It also preserves server
-and public-copy checksums.
+![Proposed programmable RNA-editor design workflow](assets/future_design_pipeline.svg)
+
+A future system could combine transcriptome scanning, LAMAR ranking,
+PUF-binding compatibility, off-target filtering and editor design.
+
+Only the LAMAR sequence-ranking component is evaluated here. The remaining
+steps are proposed integrations and have not been validated as an end-to-end
+pipeline.
+
+## Scientific boundaries
+
+> **Takeaway:** Every output is a computational priority that requires
+> prospective experimental validation.
+
+Known limitations include:
+
+- one six-sample biological system;
+- unavailable external basewise mappability;
+- finite-depth computational-negative labels;
+- measurable metadata and sequence-composition bias;
+- no completed PUF-binding or off-target integration;
+- no prospective PUF-APOBEC validation in this repository.
+
+Use “computational positive,” “strict computational negative” and “candidate
+for experimental follow-up.” Avoid language that implies experimentally
+verified labels.
+
+## Reproducibility
+
+> **Takeaway:** Frozen runs, code, configurations and checksums make the dry-lab
+> study auditable without changing its test protocol.
 
 Three immutable successful runs define the study:
 
@@ -327,24 +330,14 @@ Three immutable successful runs define the study:
 - model comparison: `run_20260722T203752Z`;
 - pretrained-representation ablation: `run_20260723T045155Z`.
 
-Multi-gigabyte embeddings, full negative pools and complete prediction matrices
-remain outside ordinary Git history. Their hashes are retained in the
-successful-run manifests. Environment-specific paths use placeholders in the
-public archive.
+The public archive contains dataset and training code, configurations, QC
+assertions, filter funnels, aggregate results, error analyses, figures and
+compact model artifacts.
 
-The complete process, code and provenance are documented in the repository
-[home page](../README.md) and the
-[reproducibility guide](../lamar_binary_project/REPRODUCIBILITY.md).
+Multi-gigabyte embeddings, full negative pools and complete prediction
+matrices remain outside Git history. Their hashes remain in the server
+manifests.
 
-## Conclusion
-
-Leakage-controlled data construction and realistic calibration were essential
-for evaluating C-to-U RNA-editing prioritization. Pretrained LAMAR
-representations captured more label-associated sequence information than
-k-mer and convolutional baselines. A small linear probe extracted part of this
-signal, while LoRA adaptation produced the strongest locked-test performance.
-
-The selected model reached 47.6% precision and 12.4% recall at the frozen
-operating point. Its predictions remain hypotheses for experimental follow-up.
-Prospective testing on independently generated data is the necessary next
-step.
+See the repository [home page](../README.md) and
+[reproducibility guide](../lamar_binary_project/REPRODUCIBILITY.md) for the
+complete technical record.
