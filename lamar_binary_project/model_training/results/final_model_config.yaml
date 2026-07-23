@@ -1,0 +1,27 @@
+checkpoint: ${LAMAR_WORK_ROOT}/lamar_binary_models/run_20260722T203752Z/checkpoints/runs/final_seed42/best_trainable.safetensors
+base_state: ${LAMAR_SOURCE_ROOT}/base_2k/mammalian80D_2048len1mer1sw_80M/checkpoint-250000/model.safetensors
+config:
+  accumulation_steps: 2
+  backbone_lr: 1.0e-05
+  batch_size: 16
+  epochs: 20
+  eval_batch_size: 128
+  experiment_id: final_seed42
+  fp16: true
+  head_dropout: 0.1
+  head_lr: 0.0001
+  lora_dropout: 0.05
+  lora_rank: 4
+  lora_scheme: qkvo
+  loss: bce
+  mode: lora
+  negative_strategy: random
+  patience: 3
+  pooling: center
+  sampling_ratio: 10
+  seed: 42
+  stage: final_seeds
+  warmup_ratio: 0.03
+  weight_decay: 0.0
+calibration_method: platt
+threshold: 0.24298369973628076

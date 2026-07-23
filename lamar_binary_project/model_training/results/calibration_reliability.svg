@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="600" viewBox="0 0 720 600">
+<rect width="100%" height="100%" fill="white"/>
+<line x1="80" y1="530" x2="680" y2="530" stroke="black"/>
+<line x1="80" y1="530" x2="80" y2="40" stroke="black"/>
+<line x1="80" y1="530" x2="680" y2="40" stroke="#777" stroke-dasharray="6 5"/>
+<line x1="80" y1="530" x2="80" y2="536" stroke="black"/><text x="80" y="554" text-anchor="middle" font-size="13">0</text>
+<line x1="74" y1="530" x2="80" y2="530" stroke="black"/><text x="68" y="534" text-anchor="end" font-size="13">0</text>
+<line x1="200.0" y1="530" x2="200.0" y2="536" stroke="black"/><text x="200.0" y="554" text-anchor="middle" font-size="13">0.2</text>
+<line x1="74" y1="432.0" x2="80" y2="432.0" stroke="black"/><text x="68" y="436.0" text-anchor="end" font-size="13">0.2</text>
+<line x1="320.0" y1="530" x2="320.0" y2="536" stroke="black"/><text x="320.0" y="554" text-anchor="middle" font-size="13">0.4</text>
+<line x1="74" y1="334.0" x2="80" y2="334.0" stroke="black"/><text x="68" y="338.0" text-anchor="end" font-size="13">0.4</text>
+<line x1="440.0" y1="530" x2="440.0" y2="536" stroke="black"/><text x="440.0" y="554" text-anchor="middle" font-size="13">0.6</text>
+<line x1="74" y1="236.0" x2="80" y2="236.0" stroke="black"/><text x="68" y="240.0" text-anchor="end" font-size="13">0.6</text>
+<line x1="560.0" y1="530" x2="560.0" y2="536" stroke="black"/><text x="560.0" y="554" text-anchor="middle" font-size="13">0.8</text>
+<line x1="74" y1="138.0" x2="80" y2="138.0" stroke="black"/><text x="68" y="142.0" text-anchor="end" font-size="13">0.8</text>
+<line x1="680" y1="530" x2="680" y2="536" stroke="black"/><text x="680" y="554" text-anchor="middle" font-size="13">1</text>
+<line x1="74" y1="40" x2="80" y2="40" stroke="black"/><text x="68" y="44" text-anchor="end" font-size="13">1</text>
+<polyline points="80.04,530.00 80.08,530.00 80.12,529.96 80.17,529.96 80.26,529.96 80.39,529.93 80.60,529.96 81.00,530.00 81.84,529.93 84.09,529.72 93.23,529.57 221.76,525.12" fill="none" stroke="#4C78A8" stroke-width="2"/>
+<circle cx="80.04" cy="530.00" r="3" fill="#4C78A8"/>
+<circle cx="80.08" cy="530.00" r="3" fill="#4C78A8"/>
+<circle cx="80.12" cy="529.96" r="3" fill="#4C78A8"/>
+<circle cx="80.17" cy="529.96" r="3" fill="#4C78A8"/>
+<circle cx="80.26" cy="529.96" r="3" fill="#4C78A8"/>
+<circle cx="80.39" cy="529.93" r="3" fill="#4C78A8"/>
+<circle cx="80.60" cy="529.96" r="3" fill="#4C78A8"/>
+<circle cx="81.00" cy="530.00" r="3" fill="#4C78A8"/>
+<circle cx="81.84" cy="529.93" r="3" fill="#4C78A8"/>
+<circle cx="84.09" cy="529.72" r="3" fill="#4C78A8"/>
+<circle cx="93.23" cy="529.57" r="3" fill="#4C78A8"/>
+<circle cx="221.76" cy="525.12" r="3" fill="#4C78A8"/>
+<line x1="500" y1="65" x2="530" y2="65" stroke="#4C78A8" stroke-width="3"/><text x="538" y="70" font-size="14">none</text>
+<polyline points="80.01,529.96 80.01,529.93 80.02,529.96 80.02,529.96 80.03,530.00 80.04,530.00 80.06,529.89 80.08,529.93 80.13,529.89 80.23,529.72 80.55,529.57 86.44,525.30" fill="none" stroke="#F58518" stroke-width="2"/>
+<circle cx="80.01" cy="529.96" r="3" fill="#F58518"/>
+<circle cx="80.01" cy="529.93" r="3" fill="#F58518"/>
+<circle cx="80.02" cy="529.96" r="3" fill="#F58518"/>
+<circle cx="80.02" cy="529.96" r="3" fill="#F58518"/>
+<circle cx="80.03" cy="530.00" r="3" fill="#F58518"/>
+<circle cx="80.04" cy="530.00" r="3" fill="#F58518"/>
+<circle cx="80.06" cy="529.89" r="3" fill="#F58518"/>
+<circle cx="80.08" cy="529.93" r="3" fill="#F58518"/>
+<circle cx="80.13" cy="529.89" r="3" fill="#F58518"/>
+<circle cx="80.23" cy="529.72" r="3" fill="#F58518"/>
+<circle cx="80.55" cy="529.57" r="3" fill="#F58518"/>
+<circle cx="86.44" cy="525.30" r="3" fill="#F58518"/>
+<line x1="500" y1="87" x2="530" y2="87" stroke="#F58518" stroke-width="3"/><text x="538" y="92" font-size="14">platt</text>
+<polyline points="80.00,529.97 80.02,529.84 80.05,529.98 80.06,530.00 80.06,530.00 80.06,530.00 80.14,529.88 80.32,529.52 80.63,529.46 86.45,525.10" fill="none" stroke="#54A24B" stroke-width="2"/>
+<circle cx="80.00" cy="529.97" r="3" fill="#54A24B"/>
+<circle cx="80.02" cy="529.84" r="3" fill="#54A24B"/>
+<circle cx="80.05" cy="529.98" r="3" fill="#54A24B"/>
+<circle cx="80.06" cy="530.00" r="3" fill="#54A24B"/>
+<circle cx="80.06" cy="530.00" r="3" fill="#54A24B"/>
+<circle cx="80.06" cy="530.00" r="3" fill="#54A24B"/>
+<circle cx="80.14" cy="529.88" r="3" fill="#54A24B"/>
+<circle cx="80.32" cy="529.52" r="3" fill="#54A24B"/>
+<circle cx="80.63" cy="529.46" r="3" fill="#54A24B"/>
+<circle cx="86.45" cy="525.10" r="3" fill="#54A24B"/>
+<line x1="500" y1="109" x2="530" y2="109" stroke="#54A24B" stroke-width="3"/><text x="538" y="114" font-size="14">isotonic</text>
+<text x="380.0" y="585" text-anchor="middle" font-size="16">Predicted probability</text>
+<text x="20" y="285.0" text-anchor="middle" font-size="16" transform="rotate(-90 20 285.0)">Observed frequency</text>
+<text x="380.0" y="25" text-anchor="middle" font-size="18">Calibration reliability (OOF)</text>
+</svg>

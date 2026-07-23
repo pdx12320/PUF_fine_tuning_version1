@@ -1,0 +1,11 @@
+{
+  "label_0": 161000,
+  "label_1": 161,
+  "selected_error_models": {
+    "linear_probe": "lamar_linear_probe_center",
+    "zero_shot": "lamar_zero_shot_center"
+  },
+  "status": "PASS",
+  "test_rows": 161161,
+  "test_was_not_used_for_selection_calibration_or_thresholds": true
+}

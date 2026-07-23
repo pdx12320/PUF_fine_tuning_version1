@@ -1,0 +1,27 @@
+{
+  "audit_only": true,
+  "dev_metrics": {
+    "average_precision": 0.7501468011686914,
+    "brier": 0.047382955733406076,
+    "ece": 0.04612337048908069,
+    "f1": 0.4818181818181818,
+    "fn": 106,
+    "fp": 8,
+    "fp_per_million": 5031.446540880503,
+    "mcc": 0.5144217995918023,
+    "pr_auc": 0.7493210465957091,
+    "precision": 0.8688524590163934,
+    "recall": 0.3333333333333333,
+    "roc_auc": 0.9560697757208971,
+    "threshold": 0.5,
+    "tn": 1582,
+    "tp": 53
+  },
+  "features": "GC+C_count+entropy+coverage+gene_coverage_proxy",
+  "model": "metadata_only_logistic",
+  "seed": 20260722,
+  "status": "SUCCESS",
+  "total_parameters": 6,
+  "trainable_parameters": 6,
+  "training_time": 0.19815921783447266
+}

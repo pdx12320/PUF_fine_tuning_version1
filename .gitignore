@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+logs/
+work/
+
+# Full-size server artifacts are indexed but intentionally not committed.
+**/embeddings/*.parquet
+**/predictions/all_test_predictions.parquet
+**/predictions/calibration_predictions.parquet
+**/predictions/linear_probe_predictions.parquet
+**/predictions/reference_calibration.parquet
+**/predictions/reference_test.parquet
+**/predictions/zero_shot_predictions.parquet
+**/negative_universe_*/
+**/train_negative_pool/*.tsv.gz
+**/train_pool.sqlite*

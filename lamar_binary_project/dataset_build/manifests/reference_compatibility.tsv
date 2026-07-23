@@ -1,0 +1,7 @@
+sample	sample_name	bam_sq_count	fai_contig_count	missing_from_reference_count	length_mismatch_count	missing_from_bam_count	exact_contig_and_length_match	sample_name_in_PG_provenance	RG_header_present	bai_readable_by_pysam	status	note
+T1	CU517_GC_T1	194	194	0	0	0	1	1	0	PASS	PASS	No @RG/SM is expected in these BAMs; @PG STAR/MarkDuplicates command provenance was used
+T2	CU517_GC_T2	194	194	0	0	0	1	1	0	PASS	PASS	No @RG/SM is expected in these BAMs; @PG STAR/MarkDuplicates command provenance was used
+T3	CU517_GC_T3	194	194	0	0	0	1	1	0	PASS	PASS	No @RG/SM is expected in these BAMs; @PG STAR/MarkDuplicates command provenance was used
+C1	CU517_GC_C1	194	194	0	0	0	1	1	0	PASS	PASS	No @RG/SM is expected in these BAMs; @PG STAR/MarkDuplicates command provenance was used
+C2	CU517_GC_C2	194	194	0	0	0	1	1	0	PASS	PASS	No @RG/SM is expected in these BAMs; @PG STAR/MarkDuplicates command provenance was used
+C3	CU517_GC_C3	194	194	0	0	0	1	1	0	PASS	PASS	No @RG/SM is expected in these BAMs; @PG STAR/MarkDuplicates command provenance was used

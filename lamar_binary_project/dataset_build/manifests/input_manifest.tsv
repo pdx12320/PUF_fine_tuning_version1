@@ -1,0 +1,26 @@
+input_kind	sample	sample_name	group	replicate	sra_accession	path	size_bytes	mtime_utc	sha256	sha256_scope
+bam	T1	CU517_GC_T1	treated	1	SRR27885768	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_T1.markduplicates.bam	2925401455	2026-07-03T03:59:49.774797+00:00	b80af6e8482b306f2d6513c1a9626241da369da037a37fe5d17545f37084f164	samtools_view_header_only
+bai	T1	CU517_GC_T1	treated	1	SRR27885768	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_T1.markduplicates.bai	4484824	2026-07-03T03:59:49.776797+00:00	0ba4dc008ee28d45c7d7e76b2a27322ad81420e80a01e3284c495aa589bdbf2c	entire_file
+bam	T2	CU517_GC_T2	treated	2	SRR27885766	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_T2.markduplicates.bam	2826038197	2026-07-03T05:02:10.985532+00:00	9ce15298f3a79cdd525475cde182a5a84d97d2c094fa6b9fbc4aa76dcb90af4d	samtools_view_header_only
+bai	T2	CU517_GC_T2	treated	2	SRR27885766	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_T2.markduplicates.bai	4454336	2026-07-03T05:02:10.987532+00:00	089f056f657b17c80977267338370e62763942f6fcfb376919a5fdf9548b09d3	entire_file
+bam	T3	CU517_GC_T3	treated	3	SRR27885765	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_T3.markduplicates.bam	3018637867	2026-07-03T06:03:57.121283+00:00	5b11b27a616f6d48b6ca8983cf93794d4bd123e876ef459bc97755e189e90acc	samtools_view_header_only
+bai	T3	CU517_GC_T3	treated	3	SRR27885765	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_T3.markduplicates.bai	4573152	2026-07-03T06:03:57.122283+00:00	f4f21ef1cc64e22c9a4f4ddae557943ad3ea302d09b4cf210e500543dccd11c7	entire_file
+bam	C1	CU517_GC_C1	control	1	SRR27885767	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_C1.markduplicates.bam	2933765444	2026-07-03T07:09:34.990488+00:00	bb835f0f38a213793c036797defe270a805cdabb7129f3280b6a687de93a05ba	samtools_view_header_only
+bai	C1	CU517_GC_C1	control	1	SRR27885767	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_C1.markduplicates.bai	4527272	2026-07-03T07:09:34.991488+00:00	455e0a1938004b616ea9a3a0960e96123a0a596b7791a661cb63799f3adb3c4e	entire_file
+bam	C2	CU517_GC_C2	control	2	SRR27885764	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_C2.markduplicates.bam	2628014291	2026-07-03T08:13:09.898505+00:00	ba09719f8d85960a3b70a87fb1c10b88d0f90a15c904294b8a25a65e29b3a9ab	samtools_view_header_only
+bai	C2	CU517_GC_C2	control	2	SRR27885764	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_C2.markduplicates.bai	4439528	2026-07-03T08:13:09.899505+00:00	9701942f138df170eb16d7b8a155277f095740c6d91906d27ba8bf83d222a18a	entire_file
+bam	C3	CU517_GC_C3	control	3	SRR27885763	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_C3.markduplicates.bam	2787929929	2026-07-03T09:09:13.379705+00:00	ebcb58cff137ed1f4d9b01c57a01452a089c919400f3ad1df9fa2bc53d96e8ae	samtools_view_header_only
+bai	C3	CU517_GC_C3	control	3	SRR27885763	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_C3.markduplicates.bai	4494624	2026-07-03T09:09:13.380705+00:00	f3fc924b2110a32d131a3ce8a222c315df20d73573ba271840a63e717f8f9286	entire_file
+input						${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/samples.tsv	231	2026-07-05T19:38:50.030862+00:00	NA	recorded_path_size_mtime_only
+input						${IGEM_DATA_ROOT}/GRCh38.primary_assembly.genome.fa	3151417447	2026-06-21T13:36:26.300391+00:00	NA	recorded_path_size_mtime_only
+input						${IGEM_DATA_ROOT}/GRCh38.primary_assembly.genome.fa.fai	6482	2026-06-21T15:14:50.486924+00:00	NA	recorded_path_size_mtime_only
+input						${IGEM_DATA_ROOT}/gencode.v50.primary_assembly.annotation.gtf	4688772094	2026-06-09T12:55:52+00:00	NA	recorded_path_size_mtime_only
+input						${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/final/CU5.17_EGFP_GC.site_matrix.tsv.gz	249188	2026-07-05T19:38:52.863865+00:00	NA	recorded_path_size_mtime_only
+directory						${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/final/sample_calls	232	2026-07-05T19:16:33.253872+00:00	NA	recorded_path_size_mtime_only
+directory						${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/reditools/tables	4096	2026-07-05T18:39:43.222436+00:00	NA	recorded_path_size_mtime_only
+input						${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/vep/CU5.17_EGFP_GC.vep.tsv	2926571	2026-07-05T18:47:36.876008+00:00	NA	recorded_path_size_mtime_only
+input						${IGEM_DATA_ROOT}/293T_CG_GRCh38_retry/293T_CG.GRCh38.PASS.biallelic.SNV.vcf.gz	32924536	2026-07-05T17:52:12.403064+00:00	NA	recorded_path_size_mtime_only
+input						${IGEM_DATA_ROOT}/293T_CG_GRCh38_retry/293T_CG.GRCh38.PASS.biallelic.SNV.vcf.gz.tbi	1464983	2026-07-05T17:52:13.922066+00:00	NA	recorded_path_size_mtime_only
+input						${IGEM_DATA_ROOT}/HEK293T_public_WGS_3runs/vcf/HEK293T_3runs.union.SNV.vcf.gz	13263	2026-07-04T19:26:54+00:00	NA	recorded_path_size_mtime_only
+input						${IGEM_DATA_ROOT}/HEK293T_public_WGS_3runs/vcf/HEK293T_3runs.union.SNV.vcf.gz.tbi	7615	2026-07-04T19:26:55.036328+00:00	NA	recorded_path_size_mtime_only
+input						${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/lamar_background_corrected/run_20260715T214930Z/background_corrected_labels.tsv.gz	1321044	2026-07-15T21:50:18.584196+00:00	NA	recorded_path_size_mtime_only

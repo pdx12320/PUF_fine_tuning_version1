@@ -1,0 +1,21 @@
+{
+  "accumulation_steps": 2,
+  "backbone_lr": 1e-05,
+  "batch_size": 16,
+  "epochs": 20,
+  "eval_batch_size": 128,
+  "experiment_id": "s1_frozen_attention",
+  "fp16": true,
+  "head_dropout": 0.1,
+  "head_lr": 0.0001,
+  "loss": "bce",
+  "mode": "frozen",
+  "negative_strategy": "random",
+  "patience": 3,
+  "pooling": "attention",
+  "sampling_ratio": 10,
+  "seed": 42,
+  "stage": "stage1_frozen",
+  "warmup_ratio": 0.03,
+  "weight_decay": 0.01
+}

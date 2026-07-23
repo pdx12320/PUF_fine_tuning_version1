@@ -1,0 +1,7 @@
+sample	sample_name	bam	return_code	stdout	stderr	status
+T1	CU517_GC_T1	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_T1.markduplicates.bam	0			PASS
+T2	CU517_GC_T2	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_T2.markduplicates.bam	0			PASS
+T3	CU517_GC_T3	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_T3.markduplicates.bam	0			PASS
+C1	CU517_GC_C1	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_C1.markduplicates.bam	0			PASS
+C2	CU517_GC_C2	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_C2.markduplicates.bam	0			PASS
+C3	CU517_GC_C3	${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_C3.markduplicates.bam	0			PASS

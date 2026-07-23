@@ -1,0 +1,45 @@
+{
+  "backbone_parameters": 85851793,
+  "checkpoint_path": "${LAMAR_SOURCE_ROOT}/base_2k/mammalian80D_2048len1mer1sw_80M/checkpoint-250000/model.safetensors",
+  "checkpoint_sha256": "d58fe7deced21bebe212e00963558adc7d8042c9661c1ab746b2e97ef3043ea1",
+  "checkpoint_tensor_count": 217,
+  "hidden_state_shape_per_batch": [
+    "batch",
+    103,
+    768
+  ],
+  "label_0": 10280,
+  "label_1": 1028,
+  "model_input_shape": [
+    11308,
+    103
+  ],
+  "output": "embeddings/train.parquet",
+  "output_sha256": "d3542217c805593062f36a77b610622a4de77cff011279dffc3c5c1fc13d3cbf",
+  "peak_gpu_bytes": 1331497472,
+  "pooling": {
+    "center": "hidden[:, 51] corresponding to raw nucleotide index 50",
+    "cls": "hidden[:,0]; architecture and tokenizer support CLS",
+    "masked_mean": "attention-mask mean excluding CLS/EOS/padding",
+    "mean": "mean of 101 nucleotide tokens hidden[:,1:102]",
+    "mean_masked_mean_max_abs_difference": 3.814697265625e-06
+  },
+  "pretrained_model_parameters_including_MLM_head": 86451611,
+  "raw_center_index": 50,
+  "requires_grad_all_false": true,
+  "rows": 11308,
+  "seconds": 14.9695303440094,
+  "sequence_length": 101,
+  "source": {
+    "negative_count": 10280,
+    "negative_pool_total": 1975244,
+    "negative_ratio": 10,
+    "positive_count": 1028,
+    "sampling": "numpy Generator.choice without replacement from train-only SQLite IDs",
+    "sampling_seed": 1051,
+    "selected_id_sha256": "7626a5560797a5c6ba092d690af453272ae88aa587416302c45255c24bddd8c9"
+  },
+  "split": "train",
+  "status": "PASS",
+  "trainable_parameters": 0
+}
