@@ -1,0 +1,6 @@
+metric	value	status
+strict_rows	2821734	INFO
+relaxed_only_rows	594267	INFO
+near_zero_only_rows	144294	INFO
+external_basewise_mappability_resource	NA_RESOURCE_MISSING; MAPQ30 pileup filtering is not treated as mappability	LIMITATION
+low_complexity_method	101nt single-base Shannon log2 entropy<1.20 OR any-base homopolymer>=20 OR deterministic phase0/phase1 tandem-2mer coverage>=0.80	INFO

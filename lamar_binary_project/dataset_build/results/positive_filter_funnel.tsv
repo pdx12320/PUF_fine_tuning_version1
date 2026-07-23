@@ -1,0 +1,9 @@
+order	filter_stage	retained_rows
+1	broad_candidate_rows	9930
+2	corrected_efficiency_gt_0.10	1570
+3	treated_and_control_each_depth_ge20_in_at_least_2of3	1570
+4	orientation_sequence_center_qc	1570
+5	WGS_center_absent	1530
+6	obvious_low_complexity_absent	1530
+7	unique_genomic_key	1530
+8	control_median_le_0.02_positive_main	1513

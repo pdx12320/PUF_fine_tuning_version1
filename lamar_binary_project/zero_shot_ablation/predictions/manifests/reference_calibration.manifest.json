@@ -1,0 +1,62 @@
+{
+  "details": {
+    "full_lamar": {
+      "load_report": {
+        "missing_keys": [
+          "classifier.0.weight",
+          "classifier.0.bias",
+          "classifier.2.weight",
+          "classifier.2.bias"
+        ],
+        "tensor_count": 217,
+        "unexpected_keys": [
+          "lm_head.bias",
+          "lm_head.decoder.weight",
+          "lm_head.dense.bias",
+          "lm_head.dense.weight",
+          "lm_head.layer_norm.bias",
+          "lm_head.layer_norm.weight"
+        ]
+      },
+      "mode": "full",
+      "total_parameters": 85854098,
+      "trainable_parameters": 85854098
+    },
+    "lora_source": "${LAMAR_WORK_ROOT}/lamar_binary_models/run_20260722T203752Z/calibration_predictions.parquet",
+    "partial_lamar_2blocks": {
+      "load_report": {
+        "missing_keys": [
+          "classifier.0.weight",
+          "classifier.0.bias",
+          "classifier.2.weight",
+          "classifier.2.bias"
+        ],
+        "tensor_count": 217,
+        "unexpected_keys": [
+          "lm_head.bias",
+          "lm_head.decoder.weight",
+          "lm_head.dense.bias",
+          "lm_head.dense.weight",
+          "lm_head.layer_norm.bias",
+          "lm_head.layer_norm.weight"
+        ]
+      },
+      "mode": "partial",
+      "total_parameters": 85854098,
+      "trainable_parameters": 14179585,
+      "unfreeze_last_n": 2
+    }
+  },
+  "models": [
+    "kmer_logistic",
+    "cnn",
+    "frozen_lamar_head",
+    "partial_lamar_2blocks",
+    "full_lamar",
+    "lora_best"
+  ],
+  "no_training_performed": true,
+  "rows": 165165,
+  "split": "calibration",
+  "status": "PASS"
+}

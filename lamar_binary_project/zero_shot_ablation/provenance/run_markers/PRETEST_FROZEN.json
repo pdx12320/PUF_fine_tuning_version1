@@ -1,0 +1,22 @@
+{
+  "files": {
+    "models/calibrators/cnn.joblib": "136935ca5662a9acfbade53a25f5bed27d300af01fbc8a1d43e09cad7611113b",
+    "models/calibrators/frozen_lamar_head.joblib": "666438ff2a5a7f1fad269a8fdbf09a97f9540309f04ead11345bead1df4cd6fe",
+    "models/calibrators/full_lamar.joblib": "b82b4d90d2ba597610a1f471646eceb9617745a85d4cc6744142680474a9b733",
+    "models/calibrators/hash_random.joblib": "70389e3b33966293f0a6bb5d354b26b36440e5b0e6c8095cffbd82b0b4d4c1ef",
+    "models/calibrators/kmer_logistic.joblib": "b4af6af28a70fe88bc39d8c2099743e79b6943180a1c5a39313e2d643f61122a",
+    "models/calibrators/lamar_linear_probe_center.joblib": "b26ad0b35e67b4c4632d930f4124816cd787412a3494601f412b66c1754ec244",
+    "models/calibrators/lamar_linear_probe_cls.joblib": "440604052e80fba9a174d006ee8402aa833ab6caf3ffeed86f14f1192298c411",
+    "models/calibrators/lamar_linear_probe_masked_mean.joblib": "e23d1dbf022225ba998a8a46065fb1730a692a009f773a633032a73555be00b7",
+    "models/calibrators/lamar_linear_probe_mean.joblib": "b6d4ff29df644a972fe125b6257ab80d49093a5e01cd0b3f08ed3d3ee54cc504",
+    "models/calibrators/lamar_zero_shot_center.joblib": "f4046a93825670f6cca6b97a00a4013a7d0724ec477a77e2c18b6fe437307f36",
+    "models/calibrators/lamar_zero_shot_cls.joblib": "d4251ef30f722b6d37f13b5993ba19cfd451e13a37ce0d946a9f565dc5b0bf6c",
+    "models/calibrators/lamar_zero_shot_masked_mean.joblib": "b0c2f4ccd87db44777ff56b595e7fe5de649f755c49663df40cc8d48f5573258",
+    "models/calibrators/lamar_zero_shot_mean.joblib": "c414fad13aa54de8acb3ce949546fa4833d805f9698bd09aa7e4ed440b5f7990",
+    "models/calibrators/lora_best.joblib": "5339a226dafd4179e4ad8d89ba81db44ee9c771f09fb0204ac5326a6679c54a1",
+    "models/calibrators/partial_lamar_2blocks.joblib": "5615d0eff12391829862808a265c66beb1f73e3763b49639223a9de67a67d48b",
+    "results/dev_selection.json": "e62d8275824bd08859eced1d478573906e154a22a3f5ca5b739909537c3e97ff",
+    "results/frozen_calibration.json": "67181e962d24d3f8fc9f403ed20d1ca69fae0240343b11bbda20527514b7d33d"
+  },
+  "status": "FROZEN_BEFORE_TEST"
+}

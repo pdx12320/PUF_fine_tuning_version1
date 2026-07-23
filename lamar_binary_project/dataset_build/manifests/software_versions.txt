@@ -1,0 +1,36 @@
+preflight_utc=2026-07-21T23:31:10.247027+00:00
+platform=Linux-3.10.0-1127.el7.x86_64-x86_64-with-glibc2.17
+python=3.14.6
+python_executable=${IGEM_ENV}/bin/python
+pysam=0.24.0
+pandas=NOT_INSTALLED
+numpy=2.4.6
+samtools_path=${IGEM_ENV}/bin/samtools
+samtools 1.23.1
+Using htslib 1.23.1
+Copyright (C) 2025 Genome Research Ltd.
+
+Samtools compilation details:
+    Features:       build=configure curses=yes
+    CC:             /opt/conda/conda-bld/samtools_1773861632090/_build_env/bin/x86_64-conda-linux-gnu-cc
+    CPPFLAGS:       -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem ${IGEM_ENV}/include
+    CFLAGS:         -Wall -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem ${IGEM_ENV}/include -fdebug-prefix-map=/opt/conda/conda-bld/samtools_1773861632090/work=/usr/local/src/conda/samtools-1.23.1 -fdebug-prefix-map=${IGEM_ENV}=/usr/local/src/conda-prefix
+    LDFLAGS:        -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,--allow-shlib-undefined -Wl,-rpath,${IGEM_ENV}/lib -Wl,-rpath-link,${IGEM_ENV}/lib -L${IGEM_ENV}/lib
+    HTSDIR:
+    LIBS:
+    CURSES_LIB:     -ltinfow -lncursesw
+
+HTSlib compilation details:
+    Features:       build=configure libcurl=yes S3=yes GCS=yes libdeflate=yes lzma=yes bzip2=yes plugins=yes plugin-path=${IGEM_ENV}/libexec/htslib htscodecs=1.6.6
+    CC:             /opt/conda/conda-bld/htslib_1773854783180/_build_env/bin/x86_64-conda-linux-gnu-cc
+    CPPFLAGS:       -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem ${IGEM_ENV}/include
+    CFLAGS:         -Wall -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem ${IGEM_ENV}/include -fdebug-prefix-map=/opt/conda/conda-bld/htslib_1773854783180/work=/usr/local/src/conda/htslib-1.23.1 -fdebug-prefix-map=${IGEM_ENV}=/usr/local/src/conda-prefix -fvisibility=hidden
+    LDFLAGS:        -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,--allow-shlib-undefined -Wl,-rpath,${IGEM_ENV}/lib -Wl,-rpath-link,${IGEM_ENV}/lib -L${IGEM_ENV}/lib -fvisibility=hidden -rdynamic
+
+HTSlib URL scheme handlers present:
+    built-in:	 file, preload, data
+    Amazon S3:	 s3+https, s3, s3+http
+    libcurl:	 gophers, smtp, wss, rtsp, tftp, mqtts, pop3, imaps, pop3s, ws, ftps, https, ftp, gopher, sftp, imap, http, smtps, scp, dict, mqtt, telnet
+    Google Cloud Storage:	 gs+http, gs+https, gs
+    crypt4gh-needed:	 crypt4gh
+    mem:	 mem

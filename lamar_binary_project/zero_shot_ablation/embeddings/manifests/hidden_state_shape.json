@@ -1,0 +1,14 @@
+{
+  "CLS_supported": true,
+  "backbone_parameters": 85851793,
+  "checkpoint": "${LAMAR_SOURCE_ROOT}/base_2k/mammalian80D_2048len1mer1sw_80M/checkpoint-250000/model.safetensors",
+  "checkpoint_sha256": "d58fe7deced21bebe212e00963558adc7d8042c9661c1ab746b2e97ef3043ea1",
+  "hidden_state_shape": [
+    "batch",
+    103,
+    768
+  ],
+  "mean_masked_mean_equivalent_for_fixed_length_inputs": true,
+  "pretrained_parameters_including_MLM_head": 86451611,
+  "trainable_parameters": 0
+}

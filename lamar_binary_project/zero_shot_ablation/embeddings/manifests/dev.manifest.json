@@ -1,0 +1,40 @@
+{
+  "backbone_parameters": 85851793,
+  "checkpoint_path": "${LAMAR_SOURCE_ROOT}/base_2k/mammalian80D_2048len1mer1sw_80M/checkpoint-250000/model.safetensors",
+  "checkpoint_sha256": "d58fe7deced21bebe212e00963558adc7d8042c9661c1ab746b2e97ef3043ea1",
+  "checkpoint_tensor_count": 217,
+  "hidden_state_shape_per_batch": [
+    "batch",
+    103,
+    768
+  ],
+  "label_0": 1590,
+  "label_1": 159,
+  "model_input_shape": [
+    1749,
+    103
+  ],
+  "output": "embeddings/dev.parquet",
+  "output_sha256": "3304b66cb04b1d4267b74a2c6e5ce32430a289cdcafb8871f403044f36965ff1",
+  "peak_gpu_bytes": 1331497472,
+  "pooling": {
+    "center": "hidden[:, 51] corresponding to raw nucleotide index 50",
+    "cls": "hidden[:,0]; architecture and tokenizer support CLS",
+    "masked_mean": "attention-mask mean excluding CLS/EOS/padding",
+    "mean": "mean of 101 nucleotide tokens hidden[:,1:102]",
+    "mean_masked_mean_max_abs_difference": 3.814697265625e-06
+  },
+  "pretrained_model_parameters_including_MLM_head": 86451611,
+  "raw_center_index": 50,
+  "requires_grad_all_false": true,
+  "rows": 1749,
+  "seconds": 2.8212203979492188,
+  "sequence_length": 101,
+  "source": {
+    "rows": 1749,
+    "source": "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/dev_1to10.tsv.gz"
+  },
+  "split": "dev",
+  "status": "PASS",
+  "trainable_parameters": 0
+}

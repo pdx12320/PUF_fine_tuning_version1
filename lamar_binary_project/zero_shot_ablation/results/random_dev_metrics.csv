@@ -1,0 +1,2 @@
+candidate,representation,method,trainable_parameters,dev_pr_auc,dev_average_precision,dev_roc_auc,dev_precision,dev_recall,dev_f1,dev_mcc,dev_brier,dev_ece,dev_threshold,dev_tn,dev_fp,dev_fn,dev_tp,dev_fp_per_million
+hash_random,none,predefined_sha256_uniform,0,0.08943057642655948,0.09080192384758956,0.5002333768442704,0.08745684695051784,0.4779874213836478,0.14785992217898833,-0.01193335926263595,0.3338896787966771,0.409679506696675,0.5,797,793,83,76,498742.1383647799

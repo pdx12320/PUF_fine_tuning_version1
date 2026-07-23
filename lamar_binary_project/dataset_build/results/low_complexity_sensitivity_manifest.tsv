@@ -1,0 +1,4 @@
+component	path	rows	reconstruction
+positive_main_without_low_complexity_filter	${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/positives_main_without_low_complexity_filter.tsv.gz	1513	use directly; all other positive_main rules applied, low-complexity rule not applied
+strict_negative_retained	${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict	2821734	union with strict rows in negative_low_complexity_excluded
+strict_negative_low_complexity_excluded	${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_low_complexity_excluded	2087	select would_be_strict_without_low_complexity_filter=1 then union with retained strict shards

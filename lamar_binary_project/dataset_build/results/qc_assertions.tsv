@@ -1,0 +1,12 @@
+assertion	status	violations
+gene_id_not_cross_split	PASS	0
+exact_sequence_not_cross_split	PASS	0
+genomic_key_not_cross_split	PASS	0
+genomic_center_not_cross_split	PASS	0
+leakage_group_not_cross_split	PASS	0
+overlapping_101nt_windows_not_cross_split	PASS	0
+strict_all_six_depth_ge20_and_alt_zero	PASS	0
+all_sequence_context_length_101_center_C	PASS	0
+calibration_true_1to1000	PASS	0
+test_true_1to1000	PASS	0
+test_not_used_for_hard_negative_mining	PASS	0

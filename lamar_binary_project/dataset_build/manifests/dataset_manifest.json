@@ -1,0 +1,179 @@
+{
+  "bam_selection": {
+    "CU517_GC_C1": "${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_C1.markduplicates.bam",
+    "CU517_GC_C2": "${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_C2.markduplicates.bam",
+    "CU517_GC_C3": "${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_C3.markduplicates.bam",
+    "CU517_GC_T1": "${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_T1.markduplicates.bam",
+    "CU517_GC_T2": "${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_T2.markduplicates.bam",
+    "CU517_GC_T3": "${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/bam/markduplicates/CU517_GC_T3.markduplicates.bam"
+  },
+  "code_sha256": {
+    "build_dataset.py": "765609eaa20d883a2d476f33bb985a8742443583d24da11f9f094c7a554085e4",
+    "fisher_batch.py": "39079de2b5824fa8ff76ba94af067b155fb2953affd1c7cfb6baf2c8b8ba4c6e",
+    "fisher_fixture.tsv": "3c8e71daa45a7cd2f59e5cdf2e7c4d06b725110195fbdc70861e5d0bc153128e",
+    "preflight.py": "a30b14db89e4389efe36685c07dbc99c5427c2e806f5766f274c8b518b7c5d9c",
+    "source_background_pipeline.py": "eb31e6c61f8bc342b062dd01ea2baff81878c1f6317fd19b190799b7d49399e2",
+    "source_v2_measured_negatives.py": "ff3063f25e841fe97f36a6de416b0b22f2bab8d2959d7a51b4e29a6f161f4c07",
+    "test_build_dataset.py": "8da1087f0d1fdf36cefe97def9db9ccfeff9203a3b078618da0ee25f589919ce"
+  },
+  "counts": {
+    "fixed_sets": {
+      "calibration": {
+        "achieved_1to1000": true,
+        "negative_used": 165000,
+        "positive_all": 165,
+        "positive_used": 165,
+        "prevalence": 0.000999000999000999
+      },
+      "dev": {
+        "hard_negative": 1590,
+        "negative_1to10": 1590,
+        "positive": 159
+      },
+      "test": {
+        "achieved_1to1000": true,
+        "negative_used": 161000,
+        "positive_all": 161,
+        "positive_used": 161,
+        "prevalence": 0.000999000999000999
+      },
+      "train": {
+        "negative_pool": 1975244,
+        "positive": 1028
+      }
+    },
+    "low_complexity": {
+      "negative_strict_before": 2823821,
+      "negative_strict_excluded": 2087,
+      "negative_strict_exclusion_rate": 0.0007390695090092467,
+      "positive_before": 1513,
+      "positive_excluded": 0,
+      "positive_exclusion_rate": 0.0
+    },
+    "positive_high_confidence": 1457,
+    "positive_main": 1513,
+    "splits": {
+      "calibration": {
+        "positive": 165,
+        "strict_negative": 282160
+      },
+      "dev": {
+        "positive": 159,
+        "strict_negative": 282166
+      },
+      "test": {
+        "positive": 161,
+        "strict_negative": 282164
+      },
+      "train": {
+        "positive": 1028,
+        "strict_negative": 1975244
+      }
+    },
+    "strict_negative": 2821734
+  },
+  "created_utc": "2026-07-22T18:38:26+00:00",
+  "gene_level_coverage_proxy": {
+    "definition": "per-gene mean of per-site six-sample median usable depth over retained positive_main and strict-negative modeling-universe sites; not TPM",
+    "matched_negative_use": "log2 bin included in train-only exact matching strata",
+    "path": "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/gene_coverage_summary.tsv.gz"
+  },
+  "git_status": "working directory /run/media/.../lamar7.21 was not a Git repository; code SHA-256 recorded",
+  "inputs": {
+    "broad_matrix": "${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/final/CU5.17_EGFP_GC.site_matrix.tsv.gz",
+    "gtf": "${IGEM_DATA_ROOT}/gencode.v50.primary_assembly.annotation.gtf",
+    "old_labels_audit_only": "${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/lamar_background_corrected/run_20260715T214930Z/background_corrected_labels.tsv.gz",
+    "project": "${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper",
+    "reditools_tables": "${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/reditools/tables",
+    "reference": "${IGEM_DATA_ROOT}/GRCh38.primary_assembly.genome.fa",
+    "reference_fai": "${IGEM_DATA_ROOT}/GRCh38.primary_assembly.genome.fa.fai",
+    "sample_calls": "${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/final/sample_calls",
+    "samples": "${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/samples.tsv",
+    "vep": "${IGEM_DATA_ROOT}/CU5.17_EGFP_GC_paper/vep/CU5.17_EGFP_GC.vep.tsv",
+    "wgs_vcfs": [
+      "${IGEM_DATA_ROOT}/293T_CG_GRCh38_retry/293T_CG.GRCh38.PASS.biallelic.SNV.vcf.gz",
+      "${IGEM_DATA_ROOT}/HEK293T_public_WGS_3runs/vcf/HEK293T_3runs.union.SNV.vcf.gz"
+    ]
+  },
+  "low_complexity_bias_guard": {
+    "positive_exclusion_over_10_percent": false,
+    "positive_exclusion_over_twice_negative": false,
+    "review_required_no_SUCCESS_pointer": false
+  },
+  "low_complexity_rule": {
+    "N_handling": "sequence QC exclusion before metric computation",
+    "combination": "OR",
+    "dinucleotide": "partition into non-overlapping 2-mers at phases 0 and 1; maximum consecutive identical-2mer run coverage bases/101; fail >=0.80",
+    "entropy": "single-base Shannon entropy over complete 101nt A/C/G/T window, log2, theoretical range 0-2; fail <1.20",
+    "homopolymer": "longest consecutive run of any single base; fail >=20nt"
+  },
+  "mappability_limitation": "NA_RESOURCE_MISSING for every site; MAPQ>=30 is only a pileup read filter and is not treated as mappability validation",
+  "matched_negative_fields": [
+    "site depth log2 bin",
+    "gene coverage proxy log2 bin",
+    "GC bin",
+    "center 5-mer",
+    "transcript region",
+    "mappability status",
+    "chromosome class"
+  ],
+  "negative_definition": "strict: all six usable_depth>=20 and all six target_alt_count=0; broad candidates and WGS centers excluded",
+  "negative_shards": [
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr1.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr10.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr11.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr12.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr13.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr14.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr15.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr16.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr17.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr18.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr19.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr2.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr20.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr21.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr22.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr3.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr4.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr5.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr6.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr7.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr8.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chr9.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chrM.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chrX.tsv.gz",
+    "${LAMAR_WORK_ROOT}/lamar_binary_dataset/run_20260721T231520Z/negative_universe_strict/chrY.tsv.gz"
+  ],
+  "pileup_rules": {
+    "command_core": "samtools mpileup -B -A -q 30 -Q 20 --ff 3844 -d 1000000",
+    "filters": "MAPQ>=30;BQ>=20;exclude_unmapped,secondary,qcfail,duplicate,supplementary;collapse_overlapping_mates;include_orphans;BAQ_off;ACGT_only;max_depth=1000000",
+    "minimum_usable_depth": 20,
+    "usable_depth": "A+C+G+T"
+  },
+  "positive_definition": {
+    "WGS_center": "absent from either VCF",
+    "control_median": "<=0.02",
+    "corrected_efficiency": "strictly >0.10",
+    "default": "positive_main",
+    "group_coverage": ">=2/3 each"
+  },
+  "random_seed": 20260721,
+  "scientific_label_scope": "computational positives and strict computational negatives; not experimental validation",
+  "split_optimization_metadata": [
+    "positive count",
+    "total row count",
+    "positive efficiency bin",
+    "positive chromosome",
+    "positive region",
+    "positive GC bin"
+  ],
+  "split_proportions_target": {
+    "calibration": 0.1,
+    "dev": 0.1,
+    "test": 0.1,
+    "train": 0.7
+  },
+  "status": "complete",
+  "test_prevalence": 0.000999000999000999
+}
