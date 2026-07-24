@@ -1,0 +1,106 @@
+model_id,K,strategy,selected_candidates,discovered_positives,calibration_score_threshold
+random,10,Top-K only,10,0,
+random,10,score threshold,3,0,0.9999821314630941
+random,10,threshold + Top-K,3,0,0.9999821314630941
+random,50,Top-K only,50,0,
+random,50,score threshold,49,0,0.9997512524334591
+random,50,threshold + Top-K,49,0,0.9997512524334591
+random,100,Top-K only,100,0,
+random,100,score threshold,86,0,0.999444350777134
+random,100,threshold + Top-K,86,0,0.999444350777134
+random,500,Top-K only,500,0,
+random,500,score threshold,411,0,0.9972275256027537
+random,500,threshold + Top-K,411,0,0.9972275256027537
+random,1000,Top-K only,1000,0,
+random,1000,score threshold,859,0,0.9942793325264258
+random,1000,threshold + Top-K,859,0,0.9942793325264258
+kmer,10,Top-K only,10,0,
+kmer,10,score threshold,6,0,1.021089841485636
+kmer,10,threshold + Top-K,6,0,1.021089841485636
+kmer,50,Top-K only,50,0,
+kmer,50,score threshold,27,0,0.9735627538573798
+kmer,50,threshold + Top-K,27,0,0.9735627538573798
+kmer,100,Top-K only,100,0,
+kmer,100,score threshold,65,0,0.9357468472122358
+kmer,100,threshold + Top-K,65,0,0.9357468472122358
+kmer,500,Top-K only,500,3,
+kmer,500,score threshold,416,2,0.8383763696892911
+kmer,500,threshold + Top-K,416,2,0.8383763696892911
+kmer,1000,Top-K only,1000,12,
+kmer,1000,score threshold,807,10,0.791533807916348
+kmer,1000,threshold + Top-K,807,10,0.791533807916348
+cnn,10,Top-K only,10,1,
+cnn,10,score threshold,0,0,0.06890869140625
+cnn,10,threshold + Top-K,0,0,0.06890869140625
+cnn,50,Top-K only,50,1,
+cnn,50,score threshold,27,1,0.04345703125
+cnn,50,threshold + Top-K,27,1,0.04345703125
+cnn,100,Top-K only,100,1,
+cnn,100,score threshold,66,1,0.033905029296875
+cnn,100,threshold + Top-K,66,1,0.033905029296875
+cnn,500,Top-K only,500,6,
+cnn,500,score threshold,386,5,0.01140594482421875
+cnn,500,threshold + Top-K,386,5,0.01140594482421875
+cnn,1000,Top-K only,1000,8,
+cnn,1000,score threshold,813,7,-0.0004112720489501953
+cnn,1000,threshold + Top-K,813,7,-0.0004112720489501953
+existing_binary_lamar,10,Top-K only,10,7,
+existing_binary_lamar,10,score threshold,12,7,0.9933474659919739
+existing_binary_lamar,10,threshold + Top-K,10,7,0.9933474659919739
+existing_binary_lamar,50,Top-K only,50,23,
+existing_binary_lamar,50,score threshold,58,25,0.9802125692367554
+existing_binary_lamar,50,threshold + Top-K,50,23,0.9802125692367554
+existing_binary_lamar,100,Top-K only,100,32,
+existing_binary_lamar,100,score threshold,113,34,0.9659613966941833
+existing_binary_lamar,100,threshold + Top-K,100,32,0.9659613966941833
+existing_binary_lamar,500,Top-K only,500,62,
+existing_binary_lamar,500,score threshold,519,62,0.838485836982727
+existing_binary_lamar,500,threshold + Top-K,500,62,0.838485836982727
+existing_binary_lamar,1000,Top-K only,1000,85,
+existing_binary_lamar,1000,score threshold,1009,85,0.7014935612678528
+existing_binary_lamar,1000,threshold + Top-K,1000,85,0.7014935612678528
+frozen_lamar,10,Top-K only,10,1,
+frozen_lamar,10,score threshold,5,0,4.5234375
+frozen_lamar,10,threshold + Top-K,5,0,4.5234375
+frozen_lamar,50,Top-K only,50,13,
+frozen_lamar,50,score threshold,40,12,4.03125
+frozen_lamar,50,threshold + Top-K,40,12,4.03125
+frozen_lamar,100,Top-K only,100,19,
+frozen_lamar,100,score threshold,90,17,3.8046875
+frozen_lamar,100,threshold + Top-K,90,17,3.8046875
+frozen_lamar,500,Top-K only,500,36,
+frozen_lamar,500,score threshold,529,38,3.169921875
+frozen_lamar,500,threshold + Top-K,500,36,3.169921875
+frozen_lamar,1000,Top-K only,1000,46,
+frozen_lamar,1000,score threshold,988,46,2.865234375
+frozen_lamar,1000,threshold + Top-K,988,46,2.865234375
+lora_lamar,10,Top-K only,10,5,
+lora_lamar,10,score threshold,6,4,0.442138671875
+lora_lamar,10,threshold + Top-K,6,4,0.442138671875
+lora_lamar,50,Top-K only,50,14,
+lora_lamar,50,score threshold,32,10,0.369384765625
+lora_lamar,50,threshold + Top-K,32,10,0.369384765625
+lora_lamar,100,Top-K only,100,20,
+lora_lamar,100,score threshold,70,16,0.334716796875
+lora_lamar,100,threshold + Top-K,70,16,0.334716796875
+lora_lamar,500,Top-K only,500,50,
+lora_lamar,500,score threshold,515,50,0.2305908203125
+lora_lamar,500,threshold + Top-K,500,50,0.2305908203125
+lora_lamar,1000,Top-K only,1000,60,
+lora_lamar,1000,score threshold,1036,63,0.18310546875
+lora_lamar,1000,threshold + Top-K,1000,60,0.18310546875
+hybrid_lamar,10,Top-K only,10,5,
+hybrid_lamar,10,score threshold,6,3,7.84375
+hybrid_lamar,10,threshold + Top-K,6,3,7.84375
+hybrid_lamar,50,Top-K only,50,11,
+hybrid_lamar,50,score threshold,54,12,6.7890625
+hybrid_lamar,50,threshold + Top-K,50,11,6.7890625
+hybrid_lamar,100,Top-K only,100,17,
+hybrid_lamar,100,score threshold,90,17,6.3125
+hybrid_lamar,100,threshold + Top-K,90,17,6.3125
+hybrid_lamar,500,Top-K only,500,41,
+hybrid_lamar,500,score threshold,525,41,4.546875
+hybrid_lamar,500,threshold + Top-K,500,41,4.546875
+hybrid_lamar,1000,Top-K only,1000,55,
+hybrid_lamar,1000,score threshold,1033,56,3.578125
+hybrid_lamar,1000,threshold + Top-K,1000,55,3.578125

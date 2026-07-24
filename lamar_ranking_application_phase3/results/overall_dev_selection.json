@@ -1,0 +1,73 @@
+{
+  "all_models": [
+    {
+      "average_precision": 0.001716293317465,
+      "metric_source": "three_seed_mean",
+      "model_id": "cnn",
+      "precision_at_100": 0.0066666666666666,
+      "precision_at_500": 0.004,
+      "selection_mean_precision_at_k": 0.0044666666666666
+    },
+    {
+      "average_precision": 0.0369951341217701,
+      "metric_source": "three_seed_mean",
+      "model_id": "frozen_lamar",
+      "precision_at_100": 0.1033333333333333,
+      "precision_at_500": 0.0506666666666666,
+      "selection_mean_precision_at_k": 0.1184666666666666
+    },
+    {
+      "average_precision": 0.069397546502664,
+      "metric_source": "three_seed_mean",
+      "model_id": "hybrid_lamar",
+      "precision_at_100": 0.18,
+      "precision_at_500": 0.0746666666666666,
+      "selection_mean_precision_at_k": 0.1963333333333333
+    },
+    {
+      "average_precision": 0.0015735497786415,
+      "metric_source": "three_seed_mean",
+      "model_id": "kmer",
+      "precision_at_100": 0.0,
+      "precision_at_500": 0.006,
+      "selection_mean_precision_at_k": 0.0018
+    },
+    {
+      "average_precision": 0.0715898581304682,
+      "metric_source": "three_seed_mean",
+      "model_id": "lora_lamar",
+      "precision_at_100": 0.17,
+      "precision_at_500": 0.076,
+      "selection_mean_precision_at_k": 0.1883333333333333
+    },
+    {
+      "average_precision": 0.0006086065694513,
+      "metric_source": "fixed_model_dev",
+      "model_id": "random",
+      "precision_at_100": 0.0,
+      "precision_at_500": 0.0,
+      "selection_mean_precision_at_k": 0.0
+    },
+    {
+      "average_precision": 0.1294212780445317,
+      "metric_source": "fixed_model_dev",
+      "model_id": "existing_binary_lamar",
+      "precision_at_100": 0.26,
+      "precision_at_500": 0.112,
+      "selection_mean_precision_at_k": 0.2804
+    }
+  ],
+  "selected_metrics": {
+    "average_precision": 0.1294212780445317,
+    "metric_source": "fixed_model_dev",
+    "model_id": "existing_binary_lamar",
+    "precision_at_100": 0.26,
+    "precision_at_500": 0.112,
+    "selection_mean_precision_at_k": 0.2804
+  },
+  "selected_model": "existing_binary_lamar",
+  "selection_rule": "mean Precision@K then P@100, P@500, AP",
+  "selection_universe": "complete immutable dev split",
+  "status": "PASS",
+  "test_access": false
+}

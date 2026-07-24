@@ -1,0 +1,149 @@
+# Public, path-sanitized reconstruction of the executed Phase 3 configuration.
+# Replace ${...} placeholders with local immutable asset paths.
+
+run_dir: "${RUN_DIR}"
+dataset_dir: "${BINARY_DATASET_DIR}"
+binary_model_dir: "${BINARY_MODEL_DIR}"
+zero_shot_dir: "${ZERO_SHOT_DIR}"
+python: "${LAMAR_PYTHON}"
+lamar_repo: "${LAMAR_REPO}"
+pretrained_checkpoint: "${LAMAR_PRETRAINED_CHECKPOINT}"
+tokenizer: "${LAMAR_TOKENIZER}"
+architecture_config: "${LAMAR_ARCHITECTURE_CONFIG}"
+negative_pool_sqlite: "${BINARY_MODEL_DIR}/work/train_pool.sqlite"
+binary_data_audit: "${BINARY_MODEL_DIR}/data_audit.json"
+binary_scripts_dir: "${BINARY_MODEL_DIR}/scripts"
+binary_run_config: "${BINARY_MODEL_DIR}/configs/final_seed42.json"
+binary_checkpoint: "${BINARY_MODEL_DIR}/checkpoints/runs/final_seed42/best_trainable.safetensors"
+binary_calibrator: "${BINARY_MODEL_DIR}/calibration_model.joblib"
+
+scientific_scope:
+  task: sequence-only C-editing candidate prioritization
+  labels: immutable computational positives and strict computational negatives
+  forbidden_inputs: [coverage, expression, RNA_structure, metadata]
+  reporting_only_fields: [gene, coordinate, negative_type, true_efficiency]
+  immutable:
+    - positive_negative_definitions
+    - train_dev_calibration_test_split
+    - existing_binary_classifier
+    - existing_binary_checkpoint
+
+online_pair_sampling:
+  materialize_complete_pairs: false
+  anchor_source: train_positives.tsv.gz
+  negative_source: immutable train-only SQLite pool
+  pairs_per_epoch: 10280
+  positive_anchor_count: 1028
+  expected_positive_repeats_per_epoch: 10
+  negative_ids_drawn_per_epoch: 10280
+  within_epoch_replacement: false_unless_source_pool_smaller_than_requested
+  epoch_sampling_seed_formula: seed + 1009 * (epoch + 1)
+  positive_schedule_seed_formula: seed + 7919 * (epoch + 1)
+  strategies:
+    random: 100% all strict train negatives
+    matched: 100% dataset-defined matched strict train negatives
+    hard: 100% dataset-defined rule-hard strict train negatives
+    mixed: 20% easy + 40% matched + 40% hard
+    guided: model-high-score strict train negatives only
+
+models:
+  random:
+    model_number: 0
+    method: deterministic SHA256 uniform score
+  kmer:
+    model_number: 1
+    input: 3-6mer TF-IDF + sequence-derived GC/C-count/entropy
+    optimizer: online pair-difference logistic SGD
+  cnn:
+    model_number: 2
+    input: one-hot sequence
+    architecture: Conv1D64-k9 + Conv1D128-k7 + scalar ranking head
+  existing_binary_lamar:
+    model_number: 3
+    checkpoint: checkpoints/runs/final_seed42/best_trainable.safetensors
+    scores: [raw sigmoid probability, final Platt-calibrated probability]
+  frozen_lamar:
+    model_number: 4
+    pooling: center
+    backbone: fully frozen
+    head: LayerNorm(768)-Linear(256)-GELU-Linear(1)
+  lora_lamar:
+    model_number: 5
+    pooling: center
+    lora_targets: [q_proj, k_proj, v_proj, o_proj]
+    rank: 4
+    alpha: 8
+    dropout: 0.05
+    head: LayerNorm(768)-Linear(256)-GELU-Linear(1)
+  hybrid_lamar:
+    model_number: 6
+    pooling: center
+    loss: BCE + lambda * ranking_loss
+    lambda_grid: [0.1, 0.5, 1.0]
+    lora_targets: [q_proj, k_proj, v_proj, o_proj]
+    rank: 4
+    alpha: 8
+    dropout: 0.05
+
+optimization:
+  learning_rates: [0.00001, 0.00003, 0.0001]
+  max_epochs: 20
+  early_stopping_patience: 3
+  seeds: [42, 43, 44]
+  weight_decay: 0.0
+  warmup_ratio: 0.03
+  fp16: true
+  primary_loss: pairwise_logistic
+  pairwise_logistic_formula: -log(sigmoid(score_positive - score_negative))
+  margin_ablation:
+    loss: margin
+    margins: [0.1, 0.5, 1.0]
+  listwise: skipped_preregistered_no_natural_query_groups
+
+model_selection:
+  early_stopping_universe: immutable dev_1to10 fixed set
+  final_selection_universe: all immutable dev positives and strict negatives
+  final_selection_score: unweighted mean Precision@10,50,100,500,1000
+  tie_break_order: [Precision@100, Precision@500, Average_Precision]
+  calibration_for_model_selection: false
+  test_for_model_selection: false
+  final_seed_policy: compare mean dev metrics across seeds 42/43/44; deploy seed42 checkpoint
+
+hard_negative_mining:
+  round_1_source: existing Binary Lamar seed42 raw probability
+  round_2_source: dev-selected round-1 ranking model
+  maximum_rounds: 2
+  selected_per_round: 50000
+  source_split: train only
+  filters:
+    - strict_negative
+    - unique_sequence_hash_within_round
+    - inherited_zero_cross_split_leakage
+    - exclude_prior_round_ids
+  forbidden_sources: [dev, calibration, test]
+
+evaluation:
+  budgets: [10, 50, 100, 500, 1000]
+  primary_metrics:
+    - Precision@K
+    - Recall@K
+    - EnrichmentFactor@K
+    - discovered_positives@K
+  secondary_metrics: [AveragePrecision, PR_AUC, ROC_AUC, NDCG]
+  deterministic_tie_break: sequence_id ascending
+
+threshold_and_deployment:
+  calibration_only: true
+  threshold_definition: calibration score of rank K for each requested K
+  strategies:
+    - exact_TopK
+    - calibration_quantile_score_threshold
+    - calibration_threshold_then_TopK_cap
+
+test_protocol:
+  locked_test_rows: 161161
+  positive_count: 161
+  negative_count: 161000
+  access_gate: PRETEST_FROZEN.json must exist
+  evaluation_passes: 1
+  forbidden_before_gate: [test labels, test embeddings, test predictions, test metrics]
