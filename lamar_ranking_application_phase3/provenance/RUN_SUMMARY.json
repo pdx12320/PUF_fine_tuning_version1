@@ -1,0 +1,40 @@
+{
+  "status": "SUCCESS",
+  "phase": "Phase 3 sequence-only candidate prioritization",
+  "primary_question": "Does explicit ranking optimization improve finite-budget C-editing candidate discovery over Existing Binary Lamar probability?",
+  "overall_dev_selected_model": "existing_binary_lamar",
+  "locked_test": {
+    "evaluation_passes": 1,
+    "rows": 161161,
+    "positives": 161,
+    "strict_negatives": 161000
+  },
+  "online_pairs_per_epoch": 10280,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "budgets": [
+    10,
+    50,
+    100,
+    500,
+    1000
+  ],
+  "best_test_results": {
+    "model": "existing_binary_lamar",
+    "average_precision": 0.17195756066788312,
+    "precision_at_10": 0.7,
+    "precision_at_50": 0.46,
+    "precision_at_100": 0.32,
+    "precision_at_500": 0.124,
+    "precision_at_1000": 0.085,
+    "discovered_at_10": 7,
+    "discovered_at_50": 23,
+    "discovered_at_100": 32,
+    "discovered_at_500": 62,
+    "discovered_at_1000": 85
+  },
+  "conclusion": "Existing Binary Lamar probability was an effective ranker; explicit ranking optimization did not improve Top-K discovery."
+}

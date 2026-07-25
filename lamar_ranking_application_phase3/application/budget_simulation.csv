@@ -1,0 +1,36 @@
+Model,model_id,K,discovered,precision,recall,enrichment
+Random ranking,random,10,0,0.0,0.0,0.0
+Random ranking,random,50,0,0.0,0.0,0.0
+Random ranking,random,100,0,0.0,0.0,0.0
+Random ranking,random,500,0,0.0,0.0,0.0
+Random ranking,random,1000,0,0.0,0.0,0.0
+k-mer ranking,kmer,10,0,0.0,0.0,0.0
+k-mer ranking,kmer,50,0,0.0,0.0,0.0
+k-mer ranking,kmer,100,0,0.0,0.0,0.0
+k-mer ranking,kmer,500,3,0.006,0.018633540372670808,6.006
+k-mer ranking,kmer,1000,12,0.012,0.07453416149068323,12.012
+CNN ranking,cnn,10,1,0.1,0.006211180124223602,100.10000000000001
+CNN ranking,cnn,50,1,0.02,0.006211180124223602,20.02
+CNN ranking,cnn,100,1,0.01,0.006211180124223602,10.01
+CNN ranking,cnn,500,6,0.012,0.037267080745341616,12.012
+CNN ranking,cnn,1000,8,0.008,0.049689440993788817,8.008000000000001
+Existing Binary Lamar,existing_binary_lamar,10,7,0.7,0.043478260869565216,700.6999999999999
+Existing Binary Lamar,existing_binary_lamar,50,23,0.46,0.14285714285714285,460.46000000000004
+Existing Binary Lamar,existing_binary_lamar,100,32,0.32,0.19875776397515527,320.32
+Existing Binary Lamar,existing_binary_lamar,500,62,0.124,0.38509316770186336,124.124
+Existing Binary Lamar,existing_binary_lamar,1000,85,0.085,0.5279503105590062,85.08500000000001
+Frozen Lamar ranking,frozen_lamar,10,1,0.1,0.006211180124223602,100.10000000000001
+Frozen Lamar ranking,frozen_lamar,50,13,0.26,0.08074534161490683,260.26
+Frozen Lamar ranking,frozen_lamar,100,19,0.19,0.11801242236024845,190.19
+Frozen Lamar ranking,frozen_lamar,500,36,0.072,0.2236024844720497,72.07199999999999
+Frozen Lamar ranking,frozen_lamar,1000,46,0.046,0.2857142857142857,46.046
+LoRA Lamar ranking,lora_lamar,10,5,0.5,0.031055900621118012,500.5
+LoRA Lamar ranking,lora_lamar,50,14,0.28,0.08695652173913043,280.28000000000003
+LoRA Lamar ranking,lora_lamar,100,20,0.2,0.12422360248447205,200.20000000000002
+LoRA Lamar ranking,lora_lamar,500,50,0.1,0.3105590062111801,100.10000000000001
+LoRA Lamar ranking,lora_lamar,1000,60,0.06,0.37267080745341613,60.059999999999995
+Hybrid Binary + Ranking,hybrid_lamar,10,5,0.5,0.031055900621118012,500.5
+Hybrid Binary + Ranking,hybrid_lamar,50,11,0.22,0.06832298136645963,220.22
+Hybrid Binary + Ranking,hybrid_lamar,100,17,0.17,0.10559006211180125,170.17000000000002
+Hybrid Binary + Ranking,hybrid_lamar,500,41,0.082,0.2546583850931677,82.08200000000001
+Hybrid Binary + Ranking,hybrid_lamar,1000,55,0.055,0.3416149068322981,55.055
