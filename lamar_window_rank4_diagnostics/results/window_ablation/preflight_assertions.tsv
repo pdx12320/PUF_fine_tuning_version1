@@ -1,0 +1,28 @@
+assertion	status	observed
+windows_exact	PASS	[21, 41, 61, 101]
+windows_odd_and_centered	PASS	[21, 41, 61, 101]
+train_positive_rows	PASS	1028
+train_positive_split	PASS	{'train': 1028}
+train_sequence_length_101	PASS	{101: 1028}
+train_center_C	PASS	{'C': 1028}
+negative_pool_rows	PASS	1975244
+negative_sequence_length_101	PASS	{101: 1975244}
+negative_center_C	PASS	{'C': 1975244}
+dev_total_rows	PASS	282325
+dev_label_counts	PASS	{0: 282166, 1: 159}
+dev_split	PASS	{'dev': 282325}
+dev_genomic_key_unique	PASS	282325
+dev_sequence_id_unique	PASS	282325
+dev_sequence_length_101	PASS	{101: 282325}
+dev_center_C	PASS	{'C': 282325}
+train_dev_leakage_group_disjoint	PASS	0
+window_21_train_definition	PASS	{'lengths': {21: 1028}, 'centers': {'C': 1028}}
+window_21_dev_definition	PASS	{'lengths': {21: 282325}, 'centers': {'C': 282325}}
+window_41_train_definition	PASS	{'lengths': {41: 1028}, 'centers': {'C': 1028}}
+window_41_dev_definition	PASS	{'lengths': {41: 282325}, 'centers': {'C': 282325}}
+window_61_train_definition	PASS	{'lengths': {61: 1028}, 'centers': {'C': 1028}}
+window_61_dev_definition	PASS	{'lengths': {61: 282325}, 'centers': {'C': 282325}}
+window_101_train_definition	PASS	{'lengths': {101: 1028}, 'centers': {'C': 1028}}
+window_101_dev_definition	PASS	{'lengths': {101: 282325}, 'centers': {'C': 282325}}
+steps_per_epoch	PASS	354
+optimizer_steps	PASS	7080

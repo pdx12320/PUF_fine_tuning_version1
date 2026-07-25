@@ -1,0 +1,40 @@
+{
+  "status": "RANK4_SPECTRUM_AUDIT_OK",
+  "experiment_id": "final_seed42",
+  "checkpoint_sha256": "ebbd286fee562654022be67c62dade966b542d8212e8d59b8b46b2dba61216a8",
+  "lora_scheme": "qkvo",
+  "configured_rank": 4,
+  "alpha": 8,
+  "scale_alpha_over_r": 2.0,
+  "delta_w_definition": "(alpha / r) * B @ A",
+  "module_count": 48,
+  "layer_count": 12,
+  "module_types": ["K", "O", "Q", "V"],
+  "numerical_rank_fp32_counts": {"4": 48},
+  "all_numerical_rank_fp32_equal_4": true,
+  "all_numerical_rank_fp64_equal_4": true,
+  "entropy_effective_rank": {
+    "min": 1.2766559082107476,
+    "q25": 1.7936923570733285,
+    "median": 2.021481298476056,
+    "q75": 2.6893107843726405,
+    "max": 3.5060253843687765,
+    "mean": 2.262789892037435
+  },
+  "stable_rank": {
+    "min": 1.0012604434379873,
+    "q25": 1.0129958741546068,
+    "median": 1.0215609494630553,
+    "q75": 1.1842831036806707,
+    "max": 1.75571961092032,
+    "mean": 1.1306091798424431
+  },
+  "sigma_4_over_sigma_1": {
+    "min": 0.009542498433906256,
+    "q25": 0.03775728947452049,
+    "median": 0.050072032297487926,
+    "q75": 0.07948425961409365,
+    "max": 0.2705094067666092,
+    "mean": 0.07784309724082272
+  }
+}
