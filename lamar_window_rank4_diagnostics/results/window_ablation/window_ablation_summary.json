@@ -1,0 +1,79 @@
+{
+  "calibration_or_test_accessed": false,
+  "rows": [
+    {
+      "P@10": 0.4,
+      "P@100": 0.12,
+      "P@1000": 0.033,
+      "P@50": 0.12,
+      "P@500": 0.052,
+      "average_precision": 0.03811362185284333,
+      "checkpoint_sha256": "a839bfb8322867e3a4da945eba65052684466ad74723293f02bd25b4d0652523",
+      "definition": "30 + C + 30",
+      "dev_rows": 282325,
+      "optimizer_steps": 7080,
+      "pr_auc": 0.036465492612167395,
+      "predictions_sha256": "a3455045ab8e1db6c7b7a56ff61907f8c37101ccba7ef2dc63271e0a4ad20f07",
+      "roc_auc": 0.929424701468162,
+      "window_bp": 61
+    },
+    {
+      "P@10": 0.3,
+      "P@100": 0.07,
+      "P@1000": 0.034,
+      "P@50": 0.12,
+      "P@500": 0.05,
+      "average_precision": 0.03673788361179176,
+      "checkpoint_sha256": "c945f7783ae1a3fc4ac5f654c8792b0c800284ae3fd07f11cc0ab27b64436b42",
+      "definition": "50 + C + 50",
+      "dev_rows": 282325,
+      "optimizer_steps": 7080,
+      "pr_auc": 0.033596806439511726,
+      "predictions_sha256": "79685701e6bdc22f5c5762a91f7c4750154b3729aaa4d5130dc1e5d6be6d8c5b",
+      "roc_auc": 0.9310747181829759,
+      "window_bp": 101
+    },
+    {
+      "P@10": 0.1,
+      "P@100": 0.1,
+      "P@1000": 0.034,
+      "P@50": 0.12,
+      "P@500": 0.046,
+      "average_precision": 0.031559464124589265,
+      "checkpoint_sha256": "ebf738f3c2bf33095af1382631f9367ea2432bf37d36fe73e81f2f6ab1ff8985",
+      "definition": "10 + C + 10",
+      "dev_rows": 282325,
+      "optimizer_steps": 7080,
+      "pr_auc": 0.030515801368276682,
+      "predictions_sha256": "3c5a0bad81854ed7229392fbd908bc18c041b530ea8ac0fda6c779101279b458",
+      "roc_auc": 0.9335603975838836,
+      "window_bp": 21
+    },
+    {
+      "P@10": 0.1,
+      "P@100": 0.09,
+      "P@1000": 0.033,
+      "P@50": 0.1,
+      "P@500": 0.044,
+      "average_precision": 0.02533516298073722,
+      "checkpoint_sha256": "a7d00393a2ed4ccdd78bcdc8f350c3de088332808b0759e9a764226fdb9a292e",
+      "definition": "20 + C + 20",
+      "dev_rows": 282325,
+      "optimizer_steps": 7080,
+      "pr_auc": 0.02397697820065013,
+      "predictions_sha256": "c764a50a8b7352179d0e44384e954941308ce56f5fb61dc0d31befa046abef0a",
+      "roc_auc": 0.9334025329752588,
+      "window_bp": 41
+    }
+  ],
+  "same_complete_dev_universe_verified": true,
+  "same_negative_selections_verified": true,
+  "same_optimizer_steps_verified": true,
+  "selected_window_bp": 61,
+  "selection_metric": "complete_dev_average_precision",
+  "status": "SUMMARY_OK",
+  "tie_breakers": [
+    "P@100",
+    "shorter_window"
+  ]
+}

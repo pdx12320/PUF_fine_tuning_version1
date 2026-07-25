@@ -1,0 +1,9 @@
+software	version
+python	3.11.15
+numpy	1.26.4
+pandas	3.0.2
+torch	2.0.1+cu117
+scikit-learn	1.5.2
+safetensors	0.4.0
+transformers	4.32.1
+pyyaml	6.0.2

@@ -1,0 +1,51 @@
+schema_version: 1
+experiment: frozen_head_centered_window_ablation
+
+# Replace these placeholders with paths in your own environment.
+output_dir: /path/to/new/lamar_window_ablation_frozen_head
+dataset_dir: /path/to/immutable/lamar_binary_dataset
+model_run_dir: /path/to/immutable/lamar_binary_model_run
+dev_universe: /path/to/complete_dev_universe.parquet
+python: /path/to/lamar/environment/bin/python
+
+windows:
+  - 21
+  - 41
+  - 61
+  - 101
+source_sequence_length: 101
+source_center_index: 50
+center_base: C
+
+frozen_conditions:
+  train_positive_rows: 1028
+  train_negative_pool_rows: 1975244
+  dev_positive_rows: 159
+  dev_negative_rows: 282166
+  dev_total_rows: 282325
+  seed: 42
+  mode: frozen
+  pooling: center
+  negative_strategy: random
+  sampling_ratio: 10
+  batch_size: 16
+  accumulation_steps: 2
+  optimizer_steps: 7080
+  epochs: 20
+  steps_per_epoch: 354
+  head_lr: 0.0001
+  head_dropout: 0.1
+  loss: bce
+  weight_decay: 0.01
+  warmup_ratio: 0.03
+  gradient_clip_norm: 1.0
+  fp16: true
+  eval_batch_size: 768
+  cuda_memory_fraction: 0.8
+  checkpoint_policy: final_step_only
+  evaluation_policy: complete_dev_once_after_training
+
+forbidden_path_tokens:
+  - calibration_1to1000
+  - test_1to1000
+  - test_positive_all
